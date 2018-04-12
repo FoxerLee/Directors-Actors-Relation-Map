@@ -28,7 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = []
 # static files
 STATIC_URL = '/static/'
+# TEMPLATE_PATH = '/templates/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), ]
+# TEMPLATEFILES_DIRS = [os.path.join(BASE_DIR, "templates"), ]
 
 # Application definition
 
@@ -39,7 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'relation1',
 ]
+
+
+
+BOOTSTRAP_ADMIN_SIDEBAR_MENU = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

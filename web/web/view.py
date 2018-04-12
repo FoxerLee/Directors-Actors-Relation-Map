@@ -5,6 +5,7 @@ import json
 import collections
 import csv
 
+
 def read_csv(path):
 
     csvfile = open(path, 'r')
@@ -25,7 +26,7 @@ def linear_scale(inputmin, inputmax, outputmin, outputmax, item):
     return output
 
 
-def word_counter(type, n=40):
+def word_counter(type, n=25):
     names = []
     values = []
     if type == 'actor':
@@ -34,7 +35,7 @@ def word_counter(type, n=40):
         names, values = read_csv('static/director.csv')
 
     wordDict = dict(zip(names, values))
-    removelist = ["n/a", "*", "·", "Various", ".", "-"]
+    removelist = ["n/a", "*", "·", "Various", ".", "-", "na"]
     for word in removelist:
         try:
             del wordDict[word]
@@ -52,16 +53,18 @@ def word_counter(type, n=40):
     for item in rank:
         rankdic = {}
         rankdic['text'] = item[0]
-        rankdic['size'] = linear_scale(countmin, countmax, 10, 110, item[1])
+        rankdic['size'] = linear_scale(countmin, countmax, 10, 80, item[1])
         diclist.append(rankdic)
-    diclist[0]['size'] = 120
+    diclist[0]['size'] = 90
 
     return diclist
 
 
 def index(request):
-    frequency_list = word_counter('actor')
-    return render(request, 'index.html', {'frequency_list': json.dumps(frequency_list)})
+    frequency_list_a = word_counter('actor')
+    frequency_list_d = word_counter('director')
+    return render(request, 'index1.html', {'frequency_list_a': json.dumps(frequency_list_a),
+                                           'frequency_list_d': json.dumps(frequency_list_d)})
 #
 # def index(request):
 #     context = {
