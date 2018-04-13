@@ -21,7 +21,7 @@ def create_node(father):
     level = [father]
 
     for flag in range(1, 4):
-        print(flag)
+        # print(flag)
         tmp = level[:]
         while level:
             name = level.pop()
@@ -48,7 +48,7 @@ def create_node(father):
                     for (act, value) in zip(acts, values):
                         links.append({"source": name, "target": act, "value": int(value)})
                         level.append(act)
-    print(level)
+    # print(level)
     while level:
         name = level.pop()
         nodes.append({"id": name, "group": 4})

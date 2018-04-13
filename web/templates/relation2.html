@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    {% load static %}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
   <title>SB Admin - Start Bootstrap Template</title>
+    {% load static %}
   <!-- Bootstrap core CSS-->
   <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
   <!-- Custom fonts for this template-->
@@ -17,10 +17,27 @@
   <link href="{% static 'vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="{% static 'css/sb-admin.css' %}" rel="stylesheet">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
 
-    <script src="https://d3js.org/d3.v3.min.js"></script>
-    <script src="https://d3js.org/topojson.v1.min.js"></script>
-    <script src="{% static 'js/d3.layout.cloud.js' %}"></script>
+    <style>
+
+.node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.node {
+  font: 12px sans-serif;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+
+</style>
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
@@ -39,14 +56,13 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-
-          <a class="nav-link" href="/relation1">
+          <a class="nav-link" href="charts.html">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">Charts</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="/relation2">
+          <a class="nav-link" href="tables.html">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Tables</span>
           </a>
@@ -65,7 +81,26 @@
             </li>
           </ul>
         </li>
-
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-file"></i>
+            <span class="nav-link-text">Example Pages</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+            <li>
+              <a href="login.html">Login Page</a>
+            </li>
+            <li>
+              <a href="register.html">Registration Page</a>
+            </li>
+            <li>
+              <a href="forgot-password.html">Forgot Password Page</a>
+            </li>
+            <li>
+              <a href="blank.html">Blank Page</a>
+            </li>
+          </ul>
+        </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-sitemap"></i>
@@ -215,57 +250,29 @@
         <li class="breadcrumb-item">
           <a href="#">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">My Dashboard</li>
+        <li class="breadcrumb-item active">Tables</li>
       </ol>
-
-      <!-- 频率统计-->
+      <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-area-chart"></i> 喵喵喵</div>
-        <div class="card-body">
-          <div id="word_cloud_a" width="100%" height="30"></div>
+          <i class="fa fa-table"></i> Data Table Example</div>
+            <form role="search" action="/search2" method="get">
+                 <div class="input-group">
+              <input class="form-control" type="text" name="q" placeholder="Search for...">
+              <span class="input-group-append">
+                <button class="btn btn-primary" type="submit">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+            </div>
+
+            </form>
+        <div class="card-body", id="relation2">
+
         </div>
         <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
       </div>
-        <div class="card mb-3">
-        <div class="card-header">
-          <i class="fa fa-area-chart"></i> 喵喵喵</div>
-        <div class="card-body">
-          <div id="word_cloud_d" width="100%" height="30"></div>
-        </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-      </div>
-      <!--<div class="row">-->
-        <!--<div class="col-lg-8">-->
-          <!--&lt;!&ndash; Example Bar Chart Card&ndash;&gt;-->
-          <!--<div class="card mb-3">-->
-            <!--<div class="card-header">-->
-              <!--<i class="fa fa-bar-chart"></i> Bar Chart Example</div>-->
-            <!--<div class="card-body">-->
-              <!--<div class="row">-->
-                <!--<div class="col-sm-8 my-auto">-->
-                  <!--<canvas id="myBarChart" width="100" height="50"></canvas>-->
-                <!--</div>-->
-                <!--<div class="col-sm-4 text-center my-auto">-->
-                  <!--<div class="h4 mb-0 text-primary">$34,693</div>-->
-                  <!--<div class="small text-muted">YTD Revenue</div>-->
-                  <!--<hr>-->
-                  <!--<div class="h4 mb-0 text-warning">$18,474</div>-->
-                  <!--<div class="small text-muted">YTD Expenses</div>-->
-                  <!--<hr>-->
-                  <!--<div class="h4 mb-0 text-success">$16,219</div>-->
-                  <!--<div class="small text-muted">YTD Margin</div>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>-->
-
-          <!--&lt;!&ndash; /Card Columns&ndash;&gt;-->
-        <!--</div>-->
-
-      <!--</div>-->
-
-    <!--</div>-->
+    </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->
     <footer class="sticky-footer">
@@ -304,86 +311,81 @@
     <!-- Core plugin JavaScript-->
     <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
     <!-- Page level plugin JavaScript-->
-    <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
     <script src="{% static 'vendor/datatables/jquery.dataTables.js' %}"></script>
     <script src="{% static 'vendor/datatables/dataTables.bootstrap4.js' %}"></script>
     <!-- Custom scripts for all pages-->
     <script src="{% static 'js/sb-admin.min.js' %}"></script>
     <!-- Custom scripts for this page-->
     <script src="{% static 'js/sb-admin-datatables.min.js' %}"></script>
-    <script src="{% static 'js/sb-admin-charts.min.js' %}"></script>
   </div>
-
-
 </body>
+<style>
+
+    .links line {
+        stroke: #999;
+        stroke-opacity: 0.6;
+    }
+
+    .nodes circle {
+        stroke: #fff;
+        stroke-width: 1.5px;
+    }
+
+</style>
+
 
 <script>
-    //获得数据
-   var frequency_list_a = {{ frequency_list_a | safe }};
-   var frequency_list_d = {{ frequency_list_d | safe }};
 
-   //设定一个线性非连贯比例尺来进行给不同大小的词赋颜色.
-   var color = d3.scale.linear()
-            .domain([0,1,2,3,4,5,6,10,15,20,100])
-            .range(["#ddd", "#ccc", "#bbb", "#aaa", "#999", "#888", "#777", "#666", "#555", "#444", "#333", "#222"]);
+    var width = 500,
+    height = 500;
 
-   d3.layout.cloud().size([700, 300])
-            .words(frequency_list_a)
-            .rotate(0)
-            .fontSize(function(d) { return d.size; })
-            .on("end", draw_a)
-            .start();
+    var tree = d3.layout.tree()
+        .size([width, height-200])
+        .separation(function(a, b) { return (a.parent == b.parent ? 1 : 2); });
 
-   d3.layout.cloud().size([700, 300])
-            .words(frequency_list_d)
-            .rotate(0)
-            .fontSize(function(d) { return d.size; })
-            .on("end", draw_d)
-            .start();
+    var diagonal = d3.svg.diagonal()
+        .projection(function(d) { return [d.y, d.x]; });
+
+    var svg = d3.select("#relation2").append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+	    .attr("transform", "translate(40,0)");
+
+    var root = {{ relation2_list | safe }};
+
+    var nodes = tree.nodes(root);
+    var links = tree.links(nodes);
+
+    console.log(nodes);
+    console.log(links);
+
+    var link = svg.selectAll(".link")
+      .data(links)
+      .enter()
+      .append("path")
+      .attr("class", "link")
+      .attr("d", diagonal);
+
+    var node = svg.selectAll(".node")
+      .data(nodes)
+      .enter()
+      .append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; })
+
+    node.append("circle")
+      .attr("r", 4.5);
+
+    node.append("text")
+      .attr("dx", function(d) { return d.children ? -8 : 8; })
+      .attr("dy", 3)
+      .style("text-anchor", function(d) { return d.children ? "end" : "start"; })
+      .text(function(d) { return d.name; });
 
 
 
-   function draw_a(words) {
-        d3.select("#word_cloud_a").append("svg")//根据id选择父对象插入svg
-                .attr("width", "100%")
-                .attr("height", "100%")
-                .attr("viewBox","0 0 900 400")
-                .attr("style", "border: 1px solid black")
-                .attr("preserveAspectRatio","xMaxYMax meet")
-                .attr("class", "wordcloud")
-                .append("g")
-                .attr("transform", "translate(400,200)")
-                .selectAll("text")
-                .data(words)
-                .enter().append("text")
-                .style("font-size", function(d) { return d.size + "px"; })
-                .style("fill", function(d, i) { return color(i); })
-                .attr("transform", function(d) {
-                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-                })
-                .text(function(d) { return d.text; });
-    }
 
-    function draw_d(words) {
-        d3.select("#word_cloud_d").append("svg")//根据id选择父对象插入svg
-                .attr("width", "100%")
-                .attr("height", "100%")
-                .attr("viewBox","0 0 900 400")
-                .attr("style", "border: 1px solid black")
-                .attr("preserveAspectRatio","xMaxYMax meet")
-                .attr("class", "wordcloud")
-                .append("g")
-                .attr("transform", "translate(400,200)")
-                .selectAll("text")
-                .data(words)
-                .enter().append("text")
-                .style("font-size", function(d) { return d.size + "px"; })
-                .style("fill", function(d, i) { return color(i); })
-                .attr("transform", function(d) {
-                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-                })
-                .text(function(d) { return d.text; });
-    }
 
 </script>
 

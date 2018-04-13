@@ -16,11 +16,14 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from relation1.views import detail, search
+from relation2.views import relation2, search2
 from web import view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', view.index),
     url(r'^relation1/', detail),
-    url(r'^search/', search, name='search'),
+    url(r'^search1/', search, name='search'),
+    url(r'^relation2/', relation2),
+    url(r'^search2/', search2),
 ]
