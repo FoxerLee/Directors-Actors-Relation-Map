@@ -71,6 +71,11 @@ def relation3(request):
     res = create_node("James Flavin")
     return render(request, 'relation3.html', {'relation3_list': json.dumps(res)})
 
+
+def search3(request):
+    q = request.GET.get('q')
+    res = create_node(q)
+    return render(request, 'relation3.html', {'relation3_list': json.dumps(res)})
 # if __name__ == '__main__':
 #     create_node('James Flavin')
 
