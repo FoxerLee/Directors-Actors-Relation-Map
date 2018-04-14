@@ -12,8 +12,8 @@ def read_csv(path):
 
 
 def create_node(father):
-    actors = read_csv('/Users/liyuan/Documents/商务智能/Directors-Actors-Relation-Map/web/static/actor.csv')
-    directors = read_csv('/Users/liyuan/Documents/商务智能/Directors-Actors-Relation-Map/web/static/director.csv')
+    actors = read_csv('static/actor.csv')
+    directors = read_csv('static/director.csv')
 
     # print(actors[0][0])
     nodes = []

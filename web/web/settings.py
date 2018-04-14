@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'relation1',
     'relation2',
+    'relation3',
 ]
 
 

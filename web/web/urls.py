@@ -17,6 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from relation1.views import detail, search
 from relation2.views import relation2, search2
+from relation3.views import relation3
 from web import view
 
 urlpatterns = [
@@ -26,4 +27,5 @@ urlpatterns = [
     url(r'^search1/', search, name='search'),
     url(r'^relation2/', relation2),
     url(r'^search2/', search2),
+    url(r'^relation3/', relation3),
 ]
